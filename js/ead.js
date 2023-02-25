@@ -1,7 +1,14 @@
 let canvasResolution = 16;
+let mouseDown = false;
 
 function pixelOnHover() {
-    this.style.backgroundColor = "#040F16";
+    if (mouseDown) this.style.backgroundColor = "#040F16";
+}
+
+function resetCanvas(event) {
+    document.querySelectorAll(".pixel").forEach((pixel) => {
+        pixel.style.backgroundColor = "#FBFBFF";
+    });
 }
 
 function createCanvas(res) {
@@ -19,9 +26,9 @@ function createCanvas(res) {
         row.style.height = (canvasHeight / res).toString() + "px";
         for (let pI = 0; pI < res; pI++) {
             let pixel = document.createElement("div");
+            pixel.classList.toggle("pixel")
             pixel.style.width = (canvasWidth / res).toString() + "px";
             pixel.style.height = (canvasHeight / res).toString() + "px";
-            pixel.style.backgroundColor = "red";
 
             pixel.addEventListener("mouseover", pixelOnHover);
 
@@ -30,5 +37,15 @@ function createCanvas(res) {
         canvas.appendChild(row);
     }
 }
+
+document.querySelector("#btn-clear").addEventListener("click", resetCanvas);
+
+document.addEventListener("mousedown", (event) => {
+    mouseDown = true;
+});
+
+document.addEventListener("mouseup", (event) => {
+    mouseDown = false;
+});
 
 createCanvas(canvasResolution);
