@@ -1,6 +1,7 @@
 body {
     background-color: #040F16;
     color: #FBFBFF;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .content {
@@ -8,6 +9,33 @@ body {
     flex-flow: column wrap;
     align-items: center;
 }
+
+.sketch {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 8px;
+}
+
+.btn {
+    background-color: #01BAEF;
+    color: #FBFBFF;
+    width: auto;
+    height: auto;
+    border: none;
+    border-radius: 4px;
+    font-size: 24px;
+    transition: scale 0.5s;
+}
+
+.btn:hover {
+    cursor: pointer;
+    scale: 1.2;
+}
+
+#btn-clear {
+    background-color: #92140C;
+}
+
 .canvas {
     display: flex;
     flex-flow: column nowrap;
@@ -15,6 +43,7 @@ body {
     border: solid;
     border-color: #01BAEF;
     border-width: 8px;
+    border-radius: 4px;
     padding: 8px;
     width: 500px;
     height: 500px;
@@ -31,5 +60,5 @@ body {
 
 .inputs {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }

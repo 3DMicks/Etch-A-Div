@@ -1,4 +1,4 @@
-let canvasResolution = 16;
+let initialCanvasResolution = 16;
 let mouseDown = false;
 
 function pixelOnHover() {
@@ -11,8 +11,14 @@ function resetCanvas(event) {
     });
 }
 
+function destroyCanvas(){
+    let canvas = document.querySelector(".canvas");
+    canvas.innerHTML = "";
+}
+
 function createCanvas(res) {
     let canvas = document.querySelector(".canvas");
+    document.querySelector(".resolution-text").textContent = `Resolution: ${res}x${res}`
 
     let canvasBB = canvas.getBoundingClientRect();
     let borderSize = 32;
@@ -38,14 +44,23 @@ function createCanvas(res) {
     }
 }
 
-document.querySelector("#btn-clear").addEventListener("click", resetCanvas);
-
 document.addEventListener("mousedown", (event) => {
     mouseDown = true;
 });
-
 document.addEventListener("mouseup", (event) => {
     mouseDown = false;
 });
 
-createCanvas(canvasResolution);
+document.querySelector("#btn-clear").addEventListener("click", resetCanvas);
+
+document.querySelector("#btn-res").addEventListener("click", (event)=> {
+    let newRes = +prompt("Chose a new resolution (single number)");
+    if(Number.isNaN(newRes)){
+        alert("Not a valid number.");
+        return;
+    }
+    destroyCanvas();
+    createCanvas(newRes);
+});
+
+createCanvas(initialCanvasResolution);
