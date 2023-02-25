@@ -1,8 +1,17 @@
 let initialCanvasResolution = 16;
 let mouseDown = false;
 
+
+function randomNum(range) {
+    return Math.floor(Math.random() * (range + 1));
+}
 function pixelOnHover() {
-    if (mouseDown) this.style.backgroundColor = "#040F16";
+    if (mouseDown) {
+        let r = randomNum(255);
+        let g = randomNum(255);
+        let b = randomNum(255);
+        this.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
 }
 
 function resetCanvas(event) {
@@ -11,7 +20,7 @@ function resetCanvas(event) {
     });
 }
 
-function destroyCanvas(){
+function destroyCanvas() {
     let canvas = document.querySelector(".canvas");
     canvas.innerHTML = "";
 }
@@ -53,9 +62,9 @@ document.addEventListener("mouseup", (event) => {
 
 document.querySelector("#btn-clear").addEventListener("click", resetCanvas);
 
-document.querySelector("#btn-res").addEventListener("click", (event)=> {
+document.querySelector("#btn-res").addEventListener("click", (event) => {
     let newRes = +prompt("Chose a new resolution (single number)");
-    if(Number.isNaN(newRes)){
+    if (Number.isNaN(newRes)) {
         alert("Not a valid number.");
         return;
     }
