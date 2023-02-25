@@ -2,3 +2,34 @@ body {
     background-color: #040F16;
     color: #FBFBFF;
 }
+
+.content {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+.canvas {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #FBFBFF;
+    border: solid;
+    border-color: #01BAEF;
+    border-width: 8px;
+    padding: 8px;
+    width: 500px;
+    height: 500px;
+}
+
+.canvas * {
+    border: none;
+}
+
+.canvas-row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+}
